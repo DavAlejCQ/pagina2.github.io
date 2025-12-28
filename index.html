@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Obtener ubicación exacta</title>
+</head>
+<body>
+  <h1>Permite compartir tu ubicación</h1>
+  <button onclick="getLocation()">Mostrar ubicación</button>
+
+  <script>
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          function(pos) {
+            let lat = pos.coords.latitude;
+            let lon = pos.coords.longitude;
+            alert("Tu ubicación exacta es:\nLatitud: " + lat + "\nLongitud: " + lon);
+          },
+          function(error) {
+            alert("Error al obtener ubicación: " + error.message);
+          }
+        );
+      } else {
+        alert("Tu navegador no soporta geolocalización.");
+      }
+    }
+  </script>
+</body>
+</html>
